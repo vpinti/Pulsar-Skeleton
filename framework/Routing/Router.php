@@ -18,12 +18,18 @@ class Router implements RouterInterface
     {
         $routeInfo = $this->extractRouteInfo($request);
         
-        [[$controller, $method], $vars] = $routeInfo;
+        [$handler, $vars] = $routeInfo;
 
-        return [[new $controller, $method], $vars];
+        if(is_array($handler)) {
+            [$controller, $method] = $handler;
+            $handler = [new $controller, $method];
+        }
+        
+
+        return [$handler, $vars];
     }
 
-    private function extractRouteInfo(Request $request)
+    private function extractRouteInfo(Request $request): array
     {
         // Create a dispatcher
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) {
