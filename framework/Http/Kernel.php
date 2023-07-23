@@ -4,34 +4,24 @@ declare(strict_types=1);
 
 namespace Pulsar\Framework\Http;
 
-use FastRoute\RouteCollector;
-
-use function FastRoute\simpleDispatcher;
+use Pulsar\Framework\Routing\Router;
 
 class Kernel
 {
+    public function __construct(private Router $router)
+    {
+    }
+    
     public function handle(Request $request): Response
     {
-        // Create a dispatcher
-        $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) {
-            
-            $routes = include BASE_PATH . '/routes/web.php';
-            
-            foreach($routes as $route) {
-                $routeCollector->addRoute(...$route);
-            }
-        });
+        try {
+            [$routeHanlder, $vars] = $this->router->dispatch($request);
 
-        // Dispatch a URI, to obtain the route info
-        $routeInfo = $dispatcher->dispatch(
-            $request->getMethod(),
-            $request->getPathInfo()
-        );
+            $response = call_user_func_array($routeHanlder, $vars);
 
-        [$status, [$controller, $method], $vars] = $routeInfo;
-
-        // Call the handler, provided by the route info, in order to create a Response
-        $response = call_user_func_array([new $controller, $method], $vars);
+        } catch (\Exception $exception) {
+            $response = new Response($exception->getMessage(), 400);
+        }
 
         return $response;
     }
