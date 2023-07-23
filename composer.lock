@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e85ea7163f7e6bdda5e50cac28952ecc",
+    "content-hash": "5664dee60be4213fecd66784279f25e4",
     "packages": [
         {
             "name": "nikic/fast-route",
-            "version": "dev-master",
+            "version": "dev-hotfix",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea"
+                "url": "https://github.com/vpinti/FastRoute.git",
+                "reference": "9a3e3e18228fa664ca5d5f38b8709249bdca2bb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/34128a32009e1b41c4615bcd7d4c39968931e9ea",
-                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea",
+                "url": "https://api.github.com/repos/vpinti/FastRoute/zipball/9a3e3e18228fa664ca5d5f38b8709249bdca2bb2",
+                "reference": "9a3e3e18228fa664ca5d5f38b8709249bdca2bb2",
                 "shasum": ""
             },
             "require": {
@@ -36,7 +36,6 @@
             "suggest": {
                 "ext-apcu": "To be able to use APCu cache driver"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -44,14 +43,19 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
                 "psr-4": {
                     "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "FastRoute\\Benchmark\\": "benchmark/",
+                    "FastRoute\\Test\\": "test/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -67,10 +71,9 @@
                 "routing"
             ],
             "support": {
-                "issues": "https://github.com/nikic/FastRoute/issues",
-                "source": "https://github.com/nikic/FastRoute/tree/master"
+                "source": "https://github.com/vpinti/FastRoute/tree/hotfix"
             },
-            "time": "2023-03-16T08:06:25+00:00"
+            "time": "2023-07-23T09:50:00+00:00"
         }
     ],
     "packages-dev": [
