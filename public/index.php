@@ -6,6 +6,8 @@ use Pulsar\Framework\Http\Kernel;
 use Pulsar\Framework\Http\Request;
 use Pulsar\Framework\Http\Response;
 
+define('BASE_PATH', dirname(__DIR__));
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 // request received
