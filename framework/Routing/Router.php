@@ -25,7 +25,6 @@ class Router implements RouterInterface
             $handler = [new $controller, $method];
         }
         
-
         return [$handler, $vars];
     }
 
@@ -52,9 +51,13 @@ class Router implements RouterInterface
                 return [$routeInfo[1], $routeInfo[2]]; // routeHandler, vars
             case Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethos = implode(', ', $routeInfo[1]);
-                throw new HttpRequestMethodException("The allowed methods are $allowedMethos");
+                $e = new HttpRequestMethodException("The allowed methods are $allowedMethos");
+                $e->setStatusCode(405);
+                throw $e;
             default:
-                throw new HttpException('Not Found');
+                $e = new HttpException('Not Found');
+                $e->setStatusCode(404);
+                throw $e;
         }
     }
 }
