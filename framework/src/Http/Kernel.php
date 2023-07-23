@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Pulsar\Framework\Http;
 
-use Pulsar\Framework\Routing\Router;
+use Pulsar\Framework\Routing\RouterInterface;
 
 class Kernel
 {
-    public function __construct(private Router $router)
+    public function __construct(private RouterInterface $router)
     {
     }
     
