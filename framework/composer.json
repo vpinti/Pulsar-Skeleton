@@ -1,0 +1,23 @@
+{
+    "name": "pulsar/framework",
+    "description": "The Pulsar Framework.",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vittorio Pinti",
+            "email": "vittorio.pinti@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pulsar\\Framework\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "6.3.x-dev"
+    },
+    "require": {
+        "nikic/fast-route": "dev-master"
+    }
+}

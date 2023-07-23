@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5664dee60be4213fecd66784279f25e4",
+    "content-hash": "2fdfb44173923cae543ac63271398a0b",
     "packages": [
         {
             "name": "nikic/fast-route",
-            "version": "dev-hotfix",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vpinti/FastRoute.git",
-                "reference": "9a3e3e18228fa664ca5d5f38b8709249bdca2bb2"
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vpinti/FastRoute/zipball/9a3e3e18228fa664ca5d5f38b8709249bdca2bb2",
-                "reference": "9a3e3e18228fa664ca5d5f38b8709249bdca2bb2",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/34128a32009e1b41c4615bcd7d4c39968931e9ea",
+                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea",
                 "shasum": ""
             },
             "require": {
@@ -36,6 +36,7 @@
             "suggest": {
                 "ext-apcu": "To be able to use APCu cache driver"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -43,19 +44,14 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "FastRoute\\": "src/"
-                },
                 "files": [
                     "src/functions.php"
-                ]
-            },
-            "autoload-dev": {
+                ],
                 "psr-4": {
-                    "FastRoute\\Benchmark\\": "benchmark/",
-                    "FastRoute\\Test\\": "test/"
+                    "FastRoute\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -71,9 +67,44 @@
                 "routing"
             ],
             "support": {
-                "source": "https://github.com/vpinti/FastRoute/tree/hotfix"
+                "issues": "https://github.com/nikic/FastRoute/issues",
+                "source": "https://github.com/nikic/FastRoute/tree/master"
             },
-            "time": "2023-07-23T09:50:00+00:00"
+            "time": "2023-03-16T08:06:25+00:00"
+        },
+        {
+            "name": "pulsar/framework",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "framework",
+                "reference": "4a5b3bc98d22b443116e4e0b5a21dd305239d28a"
+            },
+            "require": {
+                "nikic/fast-route": "dev-master"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "6.3.x-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pulsar\\Framework\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vittorio Pinti",
+                    "email": "vittorio.pinti@gmail.com"
+                }
+            ],
+            "description": "The Pulsar Framework.",
+            "transport-options": {
+                "relative": true
+            }
         }
     ],
     "packages-dev": [
@@ -249,7 +280,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nikic/fast-route": 20,
+        "pulsar/framework": 20,
         "symfony/var-dumper": 20
     },
     "prefer-stable": false,
