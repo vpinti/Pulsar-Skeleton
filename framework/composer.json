@@ -14,10 +14,17 @@
             "Pulsar\\Framework\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Pulsar\\Framework\\Tests\\": "tests"
+        }
+    },
     "require-dev": {
-        "symfony/var-dumper": "6.3.x-dev"
+        "symfony/var-dumper": "6.3.x-dev",
+        "phpunit/phpunit": "10.3.x-dev"
     },
     "require": {
-        "nikic/fast-route": "dev-master"
+        "nikic/fast-route": "dev-master",
+        "psr/container": "2.0.x-dev"
     }
 }
