@@ -7,6 +7,7 @@ namespace Pulsar\Framework\Routing;
 use FastRoute\Dispatcher;
 use Pulsar\Framework\Http\Request;
 use FastRoute\RouteCollector;
+use Psr\Container\ContainerInterface;
 use Pulsar\Framework\Http\HttpException;
 use Pulsar\Framework\Http\HttpRequestMethodException;
 
@@ -14,28 +15,33 @@ use function FastRoute\simpleDispatcher;
 
 class Router implements RouterInterface
 {
-    public function dispatch(Request $request): array
+    private array $routes;
+    
+    public function dispatch(Request $request, ContainerInterface $container): array
     {
         $routeInfo = $this->extractRouteInfo($request);
         
         [$handler, $vars] = $routeInfo;
 
         if(is_array($handler)) {
-            [$controller, $method] = $handler;
-            $handler = [new $controller, $method];
+            [$controllerId, $method] = $handler;
+            $controller = $container->get($controllerId);
+            $handler = [$controller, $method];
         }
         
         return [$handler, $vars];
+    }
+
+    public function setRoutes(array $routes): void
+    {
+        $this->routes = $routes;
     }
 
     private function extractRouteInfo(Request $request): array
     {
         // Create a dispatcher
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) {
-    
-            $routes = include BASE_PATH . '/routes/web.php';
-            
-            foreach($routes as $route) {
+            foreach($this->routes as $route) {
                 $routeCollector->addRoute(...$route);
             }
         });
