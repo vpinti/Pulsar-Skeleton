@@ -14,6 +14,11 @@ $templatesPath = BASE_PATH . '/templates';
 $container->add('APP_ENV', new League\Container\Argument\Literal\StringArgument($appEnv));
 $databaseUrl = 'sqlite:///' . BASE_PATH . '/var/db.sqlite';
 
+$container->add(
+    'base-commands-namespace',
+    new \League\Container\Argument\Literal\StringArgument('Pulsar\\Framework\\Console\\Command\\')
+);
+
 # services
 
 $container->add(
@@ -30,6 +35,9 @@ $container->extend(Pulsar\Framework\Routing\RouterInterface::class)
 $container->add(\Pulsar\Framework\Http\Kernel::class)
     ->addArgument(Pulsar\Framework\Routing\RouterInterface::class)
     ->addArgument($container);
+
+$container->add(\Pulsar\Framework\Console\Kernel::class)
+    ->addArguments([$container, \Pulsar\Framework\Console\Application::class]);
 
 $container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
     ->addArgument(new League\Container\Argument\Literal\StringArgument($templatesPath));
@@ -49,5 +57,5 @@ $container->add(\Pulsar\Framework\Dbal\ConnectionFactory::class)
 $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
     return $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
 });
-    
+
 return $container;
