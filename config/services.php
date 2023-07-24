@@ -12,6 +12,7 @@ $appEnv = $_SERVER['APP_ENV'];
 $templatesPath = BASE_PATH . '/templates';
 
 $container->add('APP_ENV', new League\Container\Argument\Literal\StringArgument($appEnv));
+$databaseUrl = 'sqlite:///' . BASE_PATH . '/var/db.sqlite';
 
 # services
 
@@ -40,4 +41,13 @@ $container->add(Pulsar\Framework\Controller\AbstractController::class);
 $container->inflector(Pulsar\Framework\Controller\AbstractController::class)
     ->invokeMethod('setContainer', [$container]);
 
+$container->add(\Pulsar\Framework\Dbal\ConnectionFactory::class)
+    ->addArguments([
+        new League\Container\Argument\Literal\StringArgument($databaseUrl)
+    ]);
+
+$container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
+    return $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
+});
+    
 return $container;
