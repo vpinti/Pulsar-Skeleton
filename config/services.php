@@ -11,7 +11,7 @@ $routes = include BASE_PATH . '/routes/web.php';
 $appEnv = $_SERVER['APP_ENV'];
 $templatesPath = BASE_PATH . '/templates';
 
-$container->add('APP_ENV', new \League\Container\Argument\Literal\StringArgument($appEnv));
+$container->add('APP_ENV', new League\Container\Argument\Literal\StringArgument($appEnv));
 
 # services
 
@@ -31,9 +31,13 @@ $container->add(\Pulsar\Framework\Http\Kernel::class)
     ->addArgument($container);
 
 $container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
-    ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatesPath));
+    ->addArgument(new League\Container\Argument\Literal\StringArgument($templatesPath));
 
-$container->addShared(\Twig\Environment::class)
+$container->addShared('twig', \Twig\Environment::class)
     ->addArgument('filesystem-loader');
+
+$container->add(Pulsar\Framework\Controller\AbstractController::class);
+$container->inflector(Pulsar\Framework\Controller\AbstractController::class)
+    ->invokeMethod('setContainer', [$container]);
 
 return $container;

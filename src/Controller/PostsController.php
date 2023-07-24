@@ -4,14 +4,20 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Pulsar\Framework\Controller\AbstractController;
 use Pulsar\Framework\Http\Response;
 
-class PostsController
+class PostsController extends AbstractController
 {
     public function show(int $id): Response
     {
-        $content = "<h1>This is Post $id</h1>";
+        return $this->render('post.html.twig', [
+            'postId' => $id
+        ]);
+    }
 
-        return new Response($content);
+    public function create(): Response
+    {
+        return $this->render('create-post.html.twig');
     }
 }
