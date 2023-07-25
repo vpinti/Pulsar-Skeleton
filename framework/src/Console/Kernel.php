@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pulsar\Framework\Console;
 
 use Psr\Container\ContainerInterface;
+use Pulsar\Framework\Console\Command\CommandInterface;
 
 final class Kernel
 {

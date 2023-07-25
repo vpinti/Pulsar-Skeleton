@@ -36,6 +36,9 @@ $container->add(\Pulsar\Framework\Http\Kernel::class)
     ->addArgument(Pulsar\Framework\Routing\RouterInterface::class)
     ->addArgument($container);
 
+$container->add(\Pulsar\Framework\Console\Application::class)
+    ->addArgument($container);
+
 $container->add(\Pulsar\Framework\Console\Kernel::class)
     ->addArguments([$container, \Pulsar\Framework\Console\Application::class]);
 
