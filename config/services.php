@@ -61,4 +61,12 @@ $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($contai
     return $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
 });
 
+$container->add(
+    'database:migrations:migrate',
+    \Pulsar\Framework\Console\Command\MigrateDatabase::class
+)->addArguments([
+    \Doctrine\DBAL\Connection::class,
+    new League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
+]);
+
 return $container;
