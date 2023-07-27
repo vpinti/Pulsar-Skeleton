@@ -106,12 +106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "b1584039605b67aa4c33e3b6ac74f984e6d3f57e"
+                "reference": "be8451aadcbf4b12d6d014435e853ddf7614f697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b1584039605b67aa4c33e3b6ac74f984e6d3f57e",
-                "reference": "b1584039605b67aa4c33e3b6ac74f984e6d3f57e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/be8451aadcbf4b12d6d014435e853ddf7614f697",
+                "reference": "be8451aadcbf4b12d6d014435e853ddf7614f697",
                 "shasum": ""
             },
             "require": {
@@ -131,6 +131,7 @@
                 "phpstan/phpstan-strict-rules": "^1.5",
                 "phpunit/phpunit": "9.6.9",
                 "psalm/plugin-phpunit": "0.18.4",
+                "slevomat/coding-standard": "8.13.1",
                 "squizlabs/php_codesniffer": "3.7.2",
                 "symfony/cache": "^5.4|^6.0",
                 "symfony/console": "^4.4|^5.4|^6.0",
@@ -210,7 +211,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-23T20:26:52+00:00"
+            "time": "2023-07-25T06:47:21+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -710,12 +711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "32bd511f6f6ab49e8d77ce358d2af13dd8a631dc"
+                "reference": "35239b0e6d657eea26104ad80e01dd1f89d7d750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/32bd511f6f6ab49e8d77ce358d2af13dd8a631dc",
-                "reference": "32bd511f6f6ab49e8d77ce358d2af13dd8a631dc",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/35239b0e6d657eea26104ad80e01dd1f89d7d750",
+                "reference": "35239b0e6d657eea26104ad80e01dd1f89d7d750",
                 "shasum": ""
             },
             "require": {
@@ -776,7 +777,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T16:34:37+00:00"
+            "time": "2023-07-25T15:08:44+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -951,12 +952,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "4ef92bf09274356497847e83169a20b2b393e64c"
+                "reference": "9a9580fff965e67fcd3d0ac448ad784cf13dc362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4ef92bf09274356497847e83169a20b2b393e64c",
-                "reference": "4ef92bf09274356497847e83169a20b2b393e64c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9a9580fff965e67fcd3d0ac448ad784cf13dc362",
+                "reference": "9a9580fff965e67fcd3d0ac448ad784cf13dc362",
                 "shasum": ""
             },
             "require": {
@@ -1015,7 +1016,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-20T16:36:01+00:00"
+            "time": "2023-07-26T07:17:41+00:00"
         }
     ],
     "packages-dev": [
