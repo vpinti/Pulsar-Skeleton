@@ -42,11 +42,20 @@ $container->add(\Pulsar\Framework\Console\Application::class)
 $container->add(\Pulsar\Framework\Console\Kernel::class)
     ->addArguments([$container, \Pulsar\Framework\Console\Application::class]);
 
-$container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
-    ->addArgument(new League\Container\Argument\Literal\StringArgument($templatesPath));
+$container->addShared(
+    \Pulsar\Framework\Session\SessionInterface::class,
+    \Pulsar\Framework\Session\Session::class
+);
 
-$container->addShared('twig', \Twig\Environment::class)
-    ->addArgument('filesystem-loader');
+$container->add('template-render-factory', \Pulsar\Framework\Template\TwigFactory::class)
+    ->addArguments([
+        \Pulsar\Framework\Session\SessionInterface::class,
+        new League\Container\Argument\Literal\StringArgument($templatesPath)
+    ]);
+
+$container->addShared('twig', function() use ($container) {
+    return $container->get('template-render-factory')->create();
+});
 
 $container->add(Pulsar\Framework\Controller\AbstractController::class);
 $container->inflector(Pulsar\Framework\Controller\AbstractController::class)
