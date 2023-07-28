@@ -10,14 +10,12 @@ use App\Repository\PostRepository;
 use Pulsar\Framework\Controller\AbstractController;
 use Pulsar\Framework\Http\RedirectResponse;
 use Pulsar\Framework\Http\Response;
-use Pulsar\Framework\Session\SessionInterface;
 
 class PostsController extends AbstractController
 {
     public function __construct(
         private PostMapper $postMapper,
-        private PostRepository $postRepository,
-        private SessionInterface $session
+        private PostRepository $postRepository
     )
     {
     }
@@ -45,7 +43,10 @@ class PostsController extends AbstractController
 
         $this->postMapper->save($post);
 
-        $this->session->setFlash('success', sprintf('Post "%s" succesfully created', $title));
+        $this->request->getSession()->setFlash(
+            'success',
+            sprintf('Post "%s" succesfully created', $title)
+        );
 
         return new RedirectResponse('/posts');
     }

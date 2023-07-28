@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace Pulsar\Framework\Http;
 
 use Psr\Container\ContainerInterface;
+use Pulsar\Framework\Http\Middleware\RequestHandlerInterface;
 use Pulsar\Framework\Routing\RouterInterface;
 
 class Kernel
 {
     private string $appEnv;
+
     public function __construct(
         private RouterInterface $router,
-        private ContainerInterface $container
+        private ContainerInterface $container,
+        private RequestHandlerInterface $requestHandler
     )
     {
         $this->appEnv = $this->container->get('APP_ENV');
@@ -20,8 +23,7 @@ class Kernel
     public function handle(Request $request): Response
     {
         try {
-            [$routeHanlder, $vars] = $this->router->dispatch($request, $this->container);
-            $response = call_user_func_array($routeHanlder, $vars);
+            $response = $this->requestHandler->handle($request);
         } catch (\Exception $exception) {
             $response = $this->createExceptionResponse($exception);
         }
@@ -43,5 +45,10 @@ class Kernel
         }
 
         return new Response('Server error', Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    public function terminate(Request $request, Response $response): void
+    {
+        $request->getSession()?->clearFlash();
     }
 }

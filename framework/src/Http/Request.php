@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Pulsar\Framework\Http;
 
+use Pulsar\Framework\Session\SessionInterface;
+
 class Request
 {
+    private SessionInterface $session;
+    
     public function __construct(
         public readonly array $getParams,
         public readonly array $postParams,
@@ -29,5 +33,15 @@ class Request
     public function getMethod(): string
     {
         return $this->server['REQUEST_METHOD'];
+    }
+
+    public function getSession(): SessionInterface
+    {
+        return $this->session;
+    }
+
+    public function setSession(SessionInterface $session): void
+    {
+        $this->session = $session;
     }
 }

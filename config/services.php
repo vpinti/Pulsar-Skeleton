@@ -32,9 +32,17 @@ $container->extend(Pulsar\Framework\Routing\RouterInterface::class)
         [new League\Container\Argument\Literal\ArrayArgument($routes)]
     );
 
+$container->add(
+    \Pulsar\Framework\Http\Middleware\RequestHandlerInterface::class,
+    \Pulsar\Framework\Http\Middleware\RequestHandler::class
+)->addArgument($container);
+
 $container->add(\Pulsar\Framework\Http\Kernel::class)
-    ->addArgument(Pulsar\Framework\Routing\RouterInterface::class)
-    ->addArgument($container);
+    ->addArguments([
+        Pulsar\Framework\Routing\RouterInterface::class,
+        $container,
+        \Pulsar\Framework\Http\Middleware\RequestHandlerInterface::class
+    ]);
 
 $container->add(\Pulsar\Framework\Console\Application::class)
     ->addArgument($container);
@@ -76,6 +84,12 @@ $container->add(
 )->addArguments([
     \Doctrine\DBAL\Connection::class,
     new League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
+]);
+
+$container->add(\Pulsar\Framework\Http\Middleware\RouterDispatch::class)
+    ->addArguments([
+        \Pulsar\Framework\Routing\RouterInterface::class,
+        $container
 ]);
 
 return $container;
