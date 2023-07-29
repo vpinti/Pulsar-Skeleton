@@ -10,7 +10,9 @@ class Session implements SessionInterface
 
     public function start(): void
     {
-        session_start();
+        if(session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
     
     public function set(string $key, $value): void
