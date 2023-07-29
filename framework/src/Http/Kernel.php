@@ -20,6 +20,7 @@ class Kernel
     {
         $this->appEnv = $this->container->get('APP_ENV');
     }
+    
     public function handle(Request $request): Response
     {
         try {
