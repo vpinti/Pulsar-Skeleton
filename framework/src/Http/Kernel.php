@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace Pulsar\Framework\Http;
 
 use Psr\Container\ContainerInterface;
+use Pulsar\Framework\EventDispatcher\EventDispatcher;
+use Pulsar\Framework\Http\Event\ResponseEvent;
 use Pulsar\Framework\Http\Middleware\RequestHandlerInterface;
-use Pulsar\Framework\Routing\RouterInterface;
+
 
 class Kernel
 {
     private string $appEnv;
 
     public function __construct(
-        private RouterInterface $router,
         private ContainerInterface $container,
-        private RequestHandlerInterface $requestHandler
+        private RequestHandlerInterface $requestHandler,
+        private EventDispatcher $eventDispatcher
     )
     {
         $this->appEnv = $this->container->get('APP_ENV');
@@ -28,6 +30,8 @@ class Kernel
         } catch (\Exception $exception) {
             $response = $this->createExceptionResponse($exception);
         }
+
+        $this->eventDispatcher->dispatch(new ResponseEvent($request, $response));
         
         return $response;
     }

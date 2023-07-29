@@ -31,11 +31,13 @@ $container->add(
     \Pulsar\Framework\Http\Middleware\RequestHandler::class
 )->addArgument($container);
 
+$container->addShared(\Pulsar\Framework\EventDispatcher\EventDispatcher::class);
+
 $container->add(\Pulsar\Framework\Http\Kernel::class)
     ->addArguments([
-        Pulsar\Framework\Routing\RouterInterface::class,
         $container,
-        \Pulsar\Framework\Http\Middleware\RequestHandlerInterface::class
+        \Pulsar\Framework\Http\Middleware\RequestHandlerInterface::class,
+        \Pulsar\Framework\EventDispatcher\EventDispatcher::class
     ]);
 
 $container->add(\Pulsar\Framework\Console\Application::class)
