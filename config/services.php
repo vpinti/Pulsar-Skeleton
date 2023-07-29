@@ -92,4 +92,10 @@ $container->add(\Pulsar\Framework\Http\Middleware\RouterDispatch::class)
         $container
 ]);
 
+$container->add(\Pulsar\Framework\Authentication\SessionAuthentication::class)
+    ->addArguments([
+        \App\Repository\UserRepository::class,
+        \Pulsar\Framework\Session\SessionInterface::class
+    ]);
+
 return $container;

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-class User
+use Pulsar\Framework\Authentication\AuthUserInterface;
+
+class User implements AuthUserInterface
 {
     public function __construct(
         private ?int $id,
@@ -25,7 +27,7 @@ class User
         );
     }
 
-    public function getAuthId(): ?int
+    public function getAuthId(): int
     {
         return $this->id;
     }
