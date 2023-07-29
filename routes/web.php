@@ -21,6 +21,11 @@ return [
         ]
     ]],
     ['POST', '/login', [\App\Controller\LoginController::class, 'login']],
+    ['GET', '/logout', [\App\Controller\LoginController::class, 'logout',
+    [
+        \Pulsar\Framework\Http\Middleware\Authenticate::class,
+    ]
+    ]],
     ['GET', '/dashboard', [\App\Controller\DashboardController::class, 'index', 
         [
             \Pulsar\Framework\Http\Middleware\Authenticate::class,

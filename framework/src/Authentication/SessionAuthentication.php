@@ -2,14 +2,12 @@
 
 namespace Pulsar\Framework\Authentication;
 
+use Pulsar\Framework\Session\Session;
 use Pulsar\Framework\Session\SessionInterface;
 
 class SessionAuthentication implements SessionAuthInterface
 {
     private AuthUserInterface $user;
-
-    //TODO: Move in other place (maybe Session) to avoid tight coupling
-    public const AUTH_KEY = 'auth_id';
 
     public function __construct(
         private AuthRepositoryInterface $authRepository,
@@ -39,14 +37,14 @@ class SessionAuthentication implements SessionAuthInterface
     {
         $this->session->start();
 
-        $this->session->set(self::AUTH_KEY, $user->getAuthId());
+        $this->session->set(Session::AUTH_KEY, $user->getAuthId());
 
         $this->user = $user;
     }
 
     public function logout()
     {
-        // TODO: Implement logout() method.
+        $this->session->remove(Session::AUTH_KEY);
     }
 
     public function getUser(): AuthUserInterface
