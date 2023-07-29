@@ -8,6 +8,9 @@ class SessionAuthentication implements SessionAuthInterface
 {
     private AuthUserInterface $user;
 
+    //TODO: Move in other place (maybe Session) to avoid tight coupling
+    public const AUTH_KEY = 'auth_id';
+
     public function __construct(
         private AuthRepositoryInterface $authRepository,
         private SessionInterface $session
@@ -23,20 +26,20 @@ class SessionAuthentication implements SessionAuthInterface
             return false;
         }
 
-        if(password_verify($password, $user->getPassword())) {
-            $this->login($user);
-
-            return true;
+        if(!password_verify($password, $user->getPassword())) {
+            return false;
         }
 
-        return false;
+        $this->login($user);
+
+        return true;
     }
 
     public function login(AuthUserInterface $user)
     {
         $this->session->start();
 
-        $this->session->set('auth_id', $user->getAuthId());
+        $this->session->set(self::AUTH_KEY, $user->getAuthId());
 
         $this->user = $user;
     }

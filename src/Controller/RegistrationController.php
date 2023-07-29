@@ -6,13 +6,17 @@ namespace App\Controller;
 
 use App\Form\User\RegistrationForm;
 use App\Repository\UserMapper;
+use Pulsar\Framework\Authentication\SessionAuthentication;
 use Pulsar\Framework\Controller\AbstractController;
 use Pulsar\Framework\Http\RedirectResponse;
 use Pulsar\Framework\Http\Response;
 
 class RegistrationController extends AbstractController
 {
-    public function __construct(private UserMapper $userMapper)
+    public function __construct(
+        private UserMapper $userMapper,
+        private SessionAuthentication $authComponent
+    )
     {
     }
     
@@ -45,6 +49,8 @@ class RegistrationController extends AbstractController
             sprintf('User %s created', $user->getUsername())
         );
 
-        return new RedirectResponse('/');
+        $this->authComponent->login($user);
+
+        return new RedirectResponse('/dashboard');
     }
 }

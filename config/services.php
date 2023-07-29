@@ -26,12 +26,6 @@ $container->add(
     Pulsar\Framework\Routing\Router::class,
 );
 
-$container->extend(Pulsar\Framework\Routing\RouterInterface::class)
-    ->addMethodCall(
-        'setRoutes',
-        [new League\Container\Argument\Literal\ArrayArgument($routes)]
-    );
-
 $container->add(
     \Pulsar\Framework\Http\Middleware\RequestHandlerInterface::class,
     \Pulsar\Framework\Http\Middleware\RequestHandler::class
@@ -97,5 +91,8 @@ $container->add(\Pulsar\Framework\Authentication\SessionAuthentication::class)
         \App\Repository\UserRepository::class,
         \Pulsar\Framework\Session\SessionInterface::class
     ]);
+
+$container->add(\Pulsar\Framework\Http\Middleware\ExtractRouteInfo::class)
+    ->addArgument(new League\Container\Argument\Literal\ArrayArgument($routes));
 
 return $container;
