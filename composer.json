@@ -9,8 +9,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "framework"
+            "type": "vcs",
+            "url": "https://github.com/vpinti/framework.git"
         }
     ],
     "require-dev": {
