@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-class Post
+use Pulsar\Framework\Dbal\Entity;
+class Post extends Entity
 {
     public function __construct(
         private ?int $id,

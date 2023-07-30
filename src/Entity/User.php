@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Pulsar\Framework\Authentication\AuthUserInterface;
-
-class User implements AuthUserInterface
+use Pulsar\Framework\Dbal\Entity;
+class User extends Entity implements AuthUserInterface
 {
     public function __construct(
         private ?int $id,
