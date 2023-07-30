@@ -11,16 +11,8 @@ require_once BASE_PATH . '/vendor/autoload.php';
 
 $container = require BASE_PATH . '/config/services.php';
 
-$eventDispatcher = $container->get(\Pulsar\Framework\EventDispatcher\EventDispatcher::class);
-$eventDispatcher
-    ->addListener(
-        \Pulsar\Framework\Http\Event\ResponseEvent::class,
-        new \App\EventListener\InternalErrorListener()
-    )
-    ->addListener(
-        \Pulsar\Framework\Http\Event\ResponseEvent::class,
-        new \App\EventListener\ContentLengthListener()
-);
+// bootstrapping
+require BASE_PATH . '/bootstrap/bootstrap.php';
 
 // request received
 $request = Request::createFromGlobals();
