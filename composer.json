@@ -17,6 +17,6 @@
         "symfony/var-dumper": "6.3.x-dev"
     },
     "require": {
-        "pulsar/framework": "dev-main"
+        "pulsar/framework": "^1.0"
     }
 }
