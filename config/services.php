@@ -12,9 +12,13 @@ $container->add('basePath', new \League\Container\Argument\Literal\StringArgumen
 $routes = include $basePath . '/routes/web.php';
 $appEnv = $_SERVER['APP_ENV'];
 $templatesPath = $basePath . '/templates';
+$databaseConfig = include $basePath . '/config/database.php';
+
+$connectionParams = $databaseConfig['connections'][$databaseConfig['default']];
+
+dd($connectionParams);
 
 $container->add('APP_ENV', new League\Container\Argument\Literal\StringArgument($appEnv));
-$databaseUrl = 'sqlite:///' . $basePath . '/var/db.sqlite';
 
 $container->add(
     'base-commands-namespace',
@@ -68,9 +72,9 @@ $container->inflector(Pulsar\Framework\Controller\AbstractController::class)
     ->invokeMethod('setContainer', [$container]);
 
 $container->add(\Pulsar\Framework\Dbal\ConnectionFactory::class)
-    ->addArguments([
-        new League\Container\Argument\Literal\StringArgument($databaseUrl)
-    ]);
+    ->addArgument(
+        new League\Container\Argument\Literal\ArrayArgument($connectionParams)
+    );
 
 $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
     return $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
