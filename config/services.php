@@ -16,8 +16,6 @@ $databaseConfig = include $basePath . '/config/database.php';
 
 $connectionParams = $databaseConfig['connections'][$databaseConfig['default']];
 
-dd($connectionParams);
-
 $container->add('APP_ENV', new League\Container\Argument\Literal\StringArgument($appEnv));
 
 $container->add(

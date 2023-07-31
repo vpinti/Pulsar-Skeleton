@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c830790bc483731599a76e98144d74f2",
+    "content-hash": "dfd9a4a674a2c3553d945c26948e7c6b",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -715,16 +715,16 @@
         },
         {
             "name": "pulsar/framework",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vpinti/framework.git",
-                "reference": "db4c0b777340ae240b07f028646a4706e8ac7e05"
+                "reference": "2660568da9cb63c1ce5460ceab740a6efcd8e098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vpinti/framework/zipball/db4c0b777340ae240b07f028646a4706e8ac7e05",
-                "reference": "db4c0b777340ae240b07f028646a4706e8ac7e05",
+                "url": "https://api.github.com/repos/vpinti/framework/zipball/2660568da9cb63c1ce5460ceab740a6efcd8e098",
+                "reference": "2660568da9cb63c1ce5460ceab740a6efcd8e098",
                 "shasum": ""
             },
             "require": {
@@ -762,10 +762,10 @@
             ],
             "description": "The Pulsar Framework.",
             "support": {
-                "source": "https://github.com/vpinti/framework/tree/1.0.1",
+                "source": "https://github.com/vpinti/framework/tree/1.0.2",
                 "issues": "https://github.com/vpinti/framework/issues"
             },
-            "time": "2023-07-30T13:25:35+00:00"
+            "time": "2023-07-31T19:16:57+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -1244,7 +1244,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
