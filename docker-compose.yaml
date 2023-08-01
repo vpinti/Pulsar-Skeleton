@@ -18,6 +18,7 @@ services:
     app:
         build:
             dockerfile: ./docker/php/Dockerfile
+            target: app
         extra_hosts:
             - host.docker.internal:host-gateway
     # MySQL
