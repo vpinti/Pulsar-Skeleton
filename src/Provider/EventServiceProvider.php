@@ -15,11 +15,14 @@ class EventServiceProvider implements ServiceProviderInterface
 {
     private array $listen = [
         ResponseEvent::class => [
-            InternalErrorListener::class,
-            ContentLengthListener::class
+            InternalErrorListener::class
         ],
         DataStored::class => [
         ]
+    ];
+
+    protected $subscribe = [
+        ContentLengthListener::class
     ];
 
     public function __construct(private EventDispatcher $eventDispatcher)
@@ -35,6 +38,12 @@ class EventServiceProvider implements ServiceProviderInterface
                 // call eventDispatcher->addListener
                 $this->eventDispatcher->addListener($eventName, new $listener());
             }
+        }
+
+        // loop over each event in the subscribe array
+        foreach (array_unique($this->subscribe) as $subscriber) {
+            // call eventDispatcher->addSubscriber
+            $this->eventDispatcher->addSubscriber(new $subscriber());
         }
     }
 }

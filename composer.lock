@@ -715,16 +715,16 @@
         },
         {
             "name": "pulsar/framework",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vpinti/framework.git",
-                "reference": "2660568da9cb63c1ce5460ceab740a6efcd8e098"
+                "reference": "b141e463489992a17d569dcd9f9d2f20190d8296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vpinti/framework/zipball/2660568da9cb63c1ce5460ceab740a6efcd8e098",
-                "reference": "2660568da9cb63c1ce5460ceab740a6efcd8e098",
+                "url": "https://api.github.com/repos/vpinti/framework/zipball/b141e463489992a17d569dcd9f9d2f20190d8296",
+                "reference": "b141e463489992a17d569dcd9f9d2f20190d8296",
                 "shasum": ""
             },
             "require": {
@@ -762,10 +762,10 @@
             ],
             "description": "The Pulsar Framework.",
             "support": {
-                "source": "https://github.com/vpinti/framework/tree/1.0.2",
+                "source": "https://github.com/vpinti/framework/tree/1.0.4",
                 "issues": "https://github.com/vpinti/framework/issues"
             },
-            "time": "2023-07-31T19:16:57+00:00"
+            "time": "2023-08-02T11:05:40+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -843,7 +843,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-main",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -906,7 +906,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/main"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/1.x"
             },
             "funding": [
                 {
@@ -926,7 +926,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-main",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -990,7 +990,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/main"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/1.x"
             },
             "funding": [
                 {
@@ -1014,12 +1014,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "fa5f1d4c2e36ebcc792730c6a162683373d2dd15"
+                "reference": "fea9dfc028453e3625a21883752ab3f2f7d206d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/fa5f1d4c2e36ebcc792730c6a162683373d2dd15",
-                "reference": "fa5f1d4c2e36ebcc792730c6a162683373d2dd15",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/fea9dfc028453e3625a21883752ab3f2f7d206d2",
+                "reference": "fea9dfc028453e3625a21883752ab3f2f7d206d2",
                 "shasum": ""
             },
             "require": {
@@ -1078,7 +1078,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-29T15:34:56+00:00"
+            "time": "2023-08-02T08:55:38+00:00"
         }
     ],
     "packages-dev": [
