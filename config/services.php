@@ -58,7 +58,8 @@ $container->addShared(
 $container->add('template-render-factory', \Pulsar\Framework\Template\TwigFactory::class)
     ->addArguments([
         \Pulsar\Framework\Session\SessionInterface::class,
-        new League\Container\Argument\Literal\StringArgument($templatesPath)
+        new League\Container\Argument\Literal\StringArgument($templatesPath),
+        new Symfony\Component\Asset\PathPackage('/static', new Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy())
     ]);
 
 $container->addShared('twig', function() use ($container) {
