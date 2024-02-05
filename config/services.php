@@ -76,7 +76,12 @@ $container->add(\Pulsar\Framework\Dbal\ConnectionFactory::class)
     );
 
 $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
-    return $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
+    $connection = $container->get(\Pulsar\Framework\Dbal\ConnectionFactory::class)->create();
+    if('mysql' === $_ENV['DB_CONNECTION']) {
+        $connection->setAutoCommit(false);
+    }
+
+    return $connection;
 });
 
 $container->add(
