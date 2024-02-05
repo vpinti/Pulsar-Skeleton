@@ -2,7 +2,7 @@
     "name": "pulsar/pulsar",
     "description": "The skeleton application for the Pulsar framework.",
     "minimum-stability": "dev",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
